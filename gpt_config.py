@@ -1,12 +1,13 @@
 import os
 
-gen_query_model = "gpt-3.5-turbo"
-html_parse_model = "gpt-4"
-abstract_parse_model = "gpt-3.5-turbo"
-pdf_extraction_model = "gpt-3.5-turbo"
+gen_query_model = "gemma-2-2b-jpn-q8:latest"
+html_parse_model = "gemma-2-2b-jpn-q8:latest"
+abstract_parse_model = "gemma-2-2b-jpn-q8:latest"
+pdf_extraction_model = "gemma-2-2b-jpn-q8:latest"
+
 
 def get_driver_path():
-    if os.name == 'nt':
-        return 'driver/chromedriver.exe'
+    if os.name == "nt":
+        return "driver/chromedriver.exe"
     else:
-        return 'driver/chromedriver'
+        return "driver/chromedriver"

@@ -1,19 +1,20 @@
 import openai
+
 import config
 import gpt_config
 import prompt
 
+
 def gen_gs_query(description, words=0):
     openai.api_key = config.openai_api_key
+    openai.api_base = config.openai_api_base
     res = openai.ChatCompletion.create(
         model=gpt_config.gen_query_model,
-        messages=prompt.gs_query_prompt(description)
+        messages=prompt.gs_query_prompt(description),
     )
-    ans = res['choices'][0]['message']['content']
+    ans = res["choices"][0]["message"]["content"]
     print(ans)
     return ans
-
-
 
 
 def unit_test():

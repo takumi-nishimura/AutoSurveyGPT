@@ -3,3 +3,5 @@ config.py
 legacy
 scholar_parse_proxy.py
 .DS_Store
+.venv
+query.json

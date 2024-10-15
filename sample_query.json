@@ -4,9 +4,9 @@
     "search_breadth": 10,
     "search_depth_cited": 2,
     "search_depth_related": 3,
-    "max_papers":100,
+    "max_papers":10,
 
     "relevance_threshold":3,
 
-    "output_file":"output/output1.ndjson"
+    "output_file":"output/sample_output.ndjson"
 }
