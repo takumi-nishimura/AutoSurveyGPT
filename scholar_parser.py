@@ -11,6 +11,7 @@ from bs4 import BeautifulSoup
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service as ChromeService
 
+import config
 from gpt_config import get_driver_path
 from logging_config import setup_logging
 

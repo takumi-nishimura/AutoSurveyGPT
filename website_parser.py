@@ -25,6 +25,9 @@ class GenericWebsiteParser:
             "--disable-blink-features=AutomationControlled"
         )
         chrome_options.add_argument("--headless")
+        chrome_options.add_argument(
+            f"--user-data-dir={config.chrome_user_data_dir}"
+        )
         driver_path = gpt_config.get_driver_path()
         chrome_service = webdriver.ChromeService(executable_path=driver_path)
         self.browser = webdriver.Chrome(
