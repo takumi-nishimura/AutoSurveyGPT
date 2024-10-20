@@ -39,6 +39,8 @@ def extract_sections(pdf_text):
     )
 
     ans = res["choices"][0]["message"]["content"]
+    if ans.startswith("```json"):
+        ans = ans[ans.find("{") : ans.rfind("}") + 1]
     logging.info("openai raw ans: " + ans)
     ans = json.loads(ans, strict=False)
 

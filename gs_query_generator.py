@@ -13,7 +13,8 @@ def gen_gs_query(description, words=0):
         messages=prompt.gs_query_prompt(description),
     )
     ans = res["choices"][0]["message"]["content"]
-    print(ans)
+    if ans.startswith("```json"):
+        ans = ans[ans.find("{") : ans.rfind("}") + 1]
     return ans
 
 

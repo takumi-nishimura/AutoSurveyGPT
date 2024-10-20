@@ -75,9 +75,13 @@ class GenericWebsiteParser:
                 messages=prompt.html_parsing_prompt(html_text),
             )
             ans = res["choices"][0]["message"]["content"]
+            if ans.startswith("```json"):
+                ans = ans[ans.find("{") : ans.rfind("}") + 1]
             try:
                 jans = json.loads(ans, strict=False)
-                print("gpt ans:" + str(jans))
+                if jans["title"] in ["", None]:
+                    continue
+                print("gpt ans: " + str(jans))
                 logging.info("gpt ans: " + str(jans))
                 return jans
             except json.decoder.JSONDecodeError as e:
@@ -118,9 +122,11 @@ class GenericWebsiteParser:
             )
 
             ans = res["choices"][0]["message"]["content"]
+            if ans.startswith("```json"):
+                ans = ans[ans.find("{") : ans.rfind("}") + 1]
             try:
                 ans = json.loads(ans, strict=False)
-                # print('gpt ans for similarity:'+str(ans))
+                print("gpt ans for similarity:" + str(ans))
                 logging.info("gpt ans for similarity: " + str(ans))
                 return ans
             except json.decoder.JSONDecodeError as e:
